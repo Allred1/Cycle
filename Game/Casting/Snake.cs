@@ -1,4 +1,4 @@
-using System;
+using System.Numerics;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,19 +13,12 @@ namespace Unit05.Game.Casting
 
         private List<Actor> segments = new List<Actor>();
 
-        Color color;
-
         /// <summary>
         /// Constructs a new instance of a Snake.
         /// </summary>
-        public Snake()
-        {
-            PrepareBody();
-        }
-
-        public Snake(Color color) {
-            this.color = color;
-            PrepareBody();
+        public Snake(Color color, Vector2 startingPosition) {
+            SetColor(color);
+            PrepareBody(startingPosition);
         }
 
         /// <summary>
@@ -106,17 +99,17 @@ namespace Unit05.Game.Casting
         /// <summary>
         /// Prepares the snake body for moving.
         /// </summary>
-        private void PrepareBody()
+        private void PrepareBody(Vector2 startingPosition)
         {
-            int x = Constants.MAX_X / 2;
-            int y = Constants.MAX_Y / 2;
+            int x = (int)startingPosition.X;
+            int y = (int)startingPosition.Y;
 
             for (int i = 0; i < Constants.SNAKE_LENGTH; i++)
             {
                 Point position = new Point(x - i * Constants.CELL_SIZE, y);
                 Point velocity = new Point(1 * Constants.CELL_SIZE, 0);
                 string text = i == 0 ? "8" : "#";
-                Color color = i == 0 ? Constants.YELLOW : Constants.GREEN;
+                Color color = i == 0 ? Constants.YELLOW : GetColor();
 
                 Actor segment = new Actor();
                 segment.SetPosition(position);
