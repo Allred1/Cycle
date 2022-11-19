@@ -95,7 +95,7 @@ namespace Unit05.Game.Scripting
             {
                 if (segment.GetPosition().Equals(head.GetPosition()) || segment.GetPosition().Equals(headTwo.GetPosition()) || head.GetPosition().Equals(headTwo.GetPosition()))
                 {
-                    isGameOver = true;    
+                    isGameOver = true;   
                 }            
             }
 
