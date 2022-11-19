@@ -133,6 +133,10 @@ namespace Unit05.Game.Scripting
                 {
                     segment.SetColor(Constants.WHITE);
                 }
+               foreach (Actor segment in segmentsTwo)
+                {
+                    segment.SetColor(Constants.WHITE);
+                }
 
                 food.SetColor(Constants.WHITE);
             }
